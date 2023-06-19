@@ -1,6 +1,24 @@
 'use client'
 
 import { useState } from 'react';
+import GoogleMaps from './autocomplete';
+import { Google } from '@mui/icons-material';
+
+
+interface MainTextMatchedSubstrings {
+  offset: number;
+  length: number;
+}
+interface StructuredFormatting {
+  main_text: string;
+  secondary_text: string;
+  main_text_matched_substrings?: readonly MainTextMatchedSubstrings[];
+}
+interface PlaceType {
+  description: string;
+  place_id: string;
+  structured_formatting: StructuredFormatting;
+}
 
 export default function LocationForm() {
 	const [location, setLocations] = useState('');
@@ -34,19 +52,16 @@ export default function LocationForm() {
 			alert(`First waypoint is ${result.firstWaypoint}`)
 	}
 
+	const handleCallback = (childLocation:PlaceType) => {
+		setWaypoints([...waypoints,
+				{ id: nextId++, location: childLocation.description, place_id: childLocation.place_id}
+		]);
+	};
+
 	return (
 			<div>
 			<label htmlFor="waypoint"> Waypoint Entry </label>
-			<input type="text" id="location" name="location" value={location} onChange={e => setLocations(e.target.value)} required />
-
-			<button  onClick={() => {
-				setWaypoints([...waypoints,
-								{ id: nextId++, location: location}
-								]);
-				}}>Add </button>
-
-
-
+			<GoogleMaps parentCallback={handleCallback}/>
 			<h3> Waypoints </h3>
 			<ul>
 			{waypoints.map(waypoint =>(
