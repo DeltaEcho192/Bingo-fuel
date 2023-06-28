@@ -20,14 +20,14 @@ interface PlaceType {
   structured_formatting: StructuredFormatting;
 }
 
+var nextId = 0;
+
 export default function LocationForm() {
-	const [location, setLocations] = useState('');
 	const [waypoints, setWaypoints] = useState<any[]>([]);
-	var nextId = 0;
 
 	const getRoute = async () => {
 			const data = {
-				route: waypoints
+				route: waypoints.map(waypoint => waypoint.place_id) 
 			}
 			const JSONdata = JSON.stringify(data)
 
