@@ -1,19 +1,20 @@
 'use client'
 
+import { useState } from 'react';
 import LocationForm from "./form";
 import DataDisplay from "./data-display";
+
 export default function DashBoard() {
-	interface datatest {
+	interface RouteData {
 		id: String
 		data: String
 	}
-	var test:datatest[]; 
-	test = [{id: "Dist",data: "xxx"}, {id: "Cost",data: "xxx"}, {id: "Stops",data: "xxx"}]
+	const [query, setQuery] = useState<RouteData[]>([]);
 	return (
 		<div>
 		<h1> Main DashBoard </h1>
-		<LocationForm />
-		<DataDisplay test={test}/>
+		<LocationForm setQuery={setQuery} query={query}/>
+		<DataDisplay query={query}/>
 		</div>
 	);
 }

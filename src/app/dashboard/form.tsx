@@ -22,8 +22,9 @@ interface PlaceType {
 
 var nextId = 0;
 
-export default function LocationForm() {
+export default function LocationForm(props:any) {
 	const [waypoints, setWaypoints] = useState<any[]>([]);
+
 
 	const getRoute = async () => {
 			const data = {
@@ -49,7 +50,9 @@ export default function LocationForm() {
 
 			const result = await response.json()
 			console.log(result)
-			alert(`First waypoint is ${result.firstWaypoint}`)
+			// How to add data to data comp
+			props.setQuery([...props.query, {id: "Distance", data:"xxx"}]);
+		//	alert(`First waypoint is ${result.firstWaypoint}`)
 	}
 
 	const handleCallback = (childLocation:PlaceType) => {

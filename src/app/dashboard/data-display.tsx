@@ -4,7 +4,7 @@ import styles from "./data-display.module.css"
 const DataDisplay = (props:any) => {
 	return (
 	<div className={styles.container}>
-		{	props.test.map((value:any) => {
+		{	props.query.map((value:any) => {
 				console.log(value.id)
 				return (
 						<div className={styles.Info}>
