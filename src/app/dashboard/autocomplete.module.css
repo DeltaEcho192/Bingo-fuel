@@ -1,0 +1,7 @@
+.inputwaypoint {
+	display:flex;
+}
+
+.waypoint_text {
+	margin-right: 15px;
+}

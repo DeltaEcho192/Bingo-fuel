@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LocationForm from "./form";
 import DataDisplay from "./data-display";
 import MapDisplay from './map-display';
+import styles from './page.module.css';
 
 export default function DashBoard() {
 	interface RouteData {
@@ -15,9 +16,13 @@ export default function DashBoard() {
 	return (
 		<div>
 		<h1> Main DashBoard </h1>
-		<LocationForm setQuery={setQuery} query={query} setEmbed={setEmbed}/>
-		<DataDisplay query={query}/>
-		<MapDisplay embed={embed} />
+		<div className={styles.main_container}>
+			<LocationForm setQuery={setQuery} query={query} setEmbed={setEmbed}/>
+			<div>
+				<DataDisplay query={query}/>
+				<MapDisplay embed={embed} />
+			</div>
+		</div>
 		</div>
 	);
 }

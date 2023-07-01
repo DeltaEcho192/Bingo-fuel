@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
+import { Button } from '@nextui-org/react';
+import styles from './autocomplete.module.css';
 
 // This key was created specifically for the demo in mui.com.
 // You need to create a new one for your application.
@@ -143,9 +145,9 @@ const GoogleMaps = (props:any) => {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-		<div>
-        <TextField {...params} label="Add a location" fullWidth />
-		<button onClick={onTrigger}>Add</button>
+		<div className={styles.inputwaypoint}>
+        <TextField {...params} label="Add a location" fullWidth className={styles.waypoint_text}/>
+		<Button auto onClick={onTrigger}>Add</Button>
 		</div>
       )}
       renderOption={(props, option) => {

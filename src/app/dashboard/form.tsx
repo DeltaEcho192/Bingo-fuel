@@ -2,7 +2,10 @@
 
 import { useState } from 'react';
 import GoogleMaps from './autocomplete';
+import styles from './form.module.css';
 import { Google } from '@mui/icons-material';
+import { Button } from "@nextui-org/react";
+import { Container, Card, Row, Grid, Text, Table } from "@nextui-org/react";
 
 
 interface MainTextMatchedSubstrings {
@@ -58,22 +61,45 @@ export default function LocationForm(props:any) {
 	}
 
 	const handleCallback = (childLocation:PlaceType) => {
+		console.log(childLocation);
 		setWaypoints([...waypoints,
 				{ id: nextId++, location: childLocation.description, place_id: childLocation.place_id}
 		]);
 	};
 
 	return (
-			<div>
-			<label htmlFor="waypoint"> Waypoint Entry </label>
-			<GoogleMaps parentCallback={handleCallback}/>
-			<h3> Waypoints </h3>
-			<ul>
-			{waypoints.map(waypoint =>(
-						<li key={waypoint.id}>{waypoint.location}</li>
-						))}
-			</ul>
-			<button onClick={getRoute}>Get Route </button>
-			</div>
+			<Grid.Container gap={2} justify="center">
+			<Grid xs={4}>
+				<Container>
+				<Text>Waypoint Entry</Text>
+				<GoogleMaps parentCallback={handleCallback}/>
+				<Button onClick={getRoute}>Get Route </Button>
+				</Container>
+			</Grid>
+			<Grid xs={4}>
+				<Container>
+
+				<Table
+				aria-label="Example table with dynamic content"
+				css={{
+					height: "auto",
+					minWidth: "100%",
+				}}>
+				<Table.Header>
+					<Table.Column> Waypoint </Table.Column>
+				</Table.Header>
+				<Table.Body items={waypoints}>
+					{(item) => (
+						console.log(item),
+						<Table.Row key={item.id}>
+							<Table.Cell>{item.location}</Table.Cell>
+						</Table.Row>
+				)}	
+				</Table.Body>
+				</Table>
+				
+				</Container>
+			</Grid>
+			</Grid.Container>
 	)
 }
