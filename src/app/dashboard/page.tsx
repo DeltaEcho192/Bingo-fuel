@@ -16,7 +16,7 @@ export default function DashBoard() {
 	return (
 		<div>
 		<h1> Main DashBoard </h1>
-		<div className={styles.main_container}>
+		<div>
 			<LocationForm setQuery={setQuery} query={query} setEmbed={setEmbed}/>
 			<div>
 				<DataDisplay query={query}/>

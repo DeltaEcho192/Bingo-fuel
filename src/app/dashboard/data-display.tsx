@@ -1,28 +1,33 @@
 'use client'
-import styles from "./data-display.module.css"
+import { Card, Text, Grid} from '@nextui-org/react';
 
 const DataDisplay = (props:any) => {
 	return (
-			<div className={styles.container}>
-			{	props.query.map((value:any) => {
-					console.log(value.id)
-					return (
-							<div className={styles.Info}>
-							<Header title={value.id}/>
-							<Data value={value.value} />
-							</div>
-						   )
-					})}
-			</div>
+			<Grid.Container gap={1} justify="center">
+				{props.query.map((value:any) => {
+					console.log(value.id);
+					return (<Grid xs={1}>
+					<CardData title={value.id} value={value.value}/>
+					</Grid>)
+					})
+				}
+			</Grid.Container>
 	);
 }
 
-function Header(props:any) {
-	return <div className={styles.data}>{props.title}</div>
-}
-
-function Data(props:any) {
-	return <div className={styles.data}>{props.value}</div>
+function CardData(props:any) {
+	console.log(props.title)
+	return (
+		<Card css={{ mw: "200px" }}>
+			<Card.Header>
+				<Text b>{props.title}</Text>
+			</Card.Header>
+			<Card.Divider/>
+			<Card.Body css={{ py: "$10" }}>
+				<Text>{props.value}</Text>
+			</Card.Body>
+		</Card>
+	)
 }
 
 export default DataDisplay

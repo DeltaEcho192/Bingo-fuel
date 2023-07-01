@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import { NextUIProvider } from '@nextui-org/react';
 

@@ -78,7 +78,6 @@ export default function LocationForm(props:any) {
 			</Grid>
 			<Grid xs={4}>
 				<Container>
-
 				<Table
 				aria-label="Example table with dynamic content"
 				css={{
