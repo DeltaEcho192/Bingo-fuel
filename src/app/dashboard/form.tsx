@@ -50,8 +50,10 @@ export default function LocationForm(props:any) {
 
 			const result = await response.json()
 			console.log(result)
+
 			// How to add data to data comp
-			props.setQuery([...props.query, {id: "Distance", data:"xxx"}]);
+			props.setQuery(result.data);
+			props.setEmbed(result.embed_url);
 		//	alert(`First waypoint is ${result.firstWaypoint}`)
 	}
 
