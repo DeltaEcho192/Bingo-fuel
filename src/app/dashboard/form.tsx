@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import GoogleMaps from './autocomplete';
-import styles from './form.module.css';
-import { Google } from '@mui/icons-material';
 import { Button } from "@nextui-org/react";
-import { Container, Card, Row, Grid, Text, Table } from "@nextui-org/react";
+import { Container, Card,Col, Row, Grid, Text, Table } from "@nextui-org/react";
 
 
 interface MainTextMatchedSubstrings {
@@ -71,9 +69,14 @@ export default function LocationForm(props:any) {
 			<Grid.Container gap={2} justify="center">
 			<Grid xs={4}>
 				<Container>
-				<Text>Waypoint Entry</Text>
+				<Row gap={1}>
+				<Col>
 				<GoogleMaps parentCallback={handleCallback}/>
-				<Button onClick={getRoute}>Get Route </Button>
+				</Col>
+				<Col>
+				<Button auto onClick={getRoute}>Get Route</Button>
+				</Col>
+				</Row>
 				</Container>
 			</Grid>
 			<Grid xs={4}>

@@ -2,9 +2,7 @@
 
 const MapDisplay = (props:any) => {
 	return (
-			<div>
-			<iframe src={props.embed}></iframe>
-			</div>
+			<iframe width="500" height="600" src={props.embed}></iframe>
 	);
 }
 

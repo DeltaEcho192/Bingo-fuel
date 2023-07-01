@@ -6,7 +6,7 @@ const DataDisplay = (props:any) => {
 			<Grid.Container gap={1} justify="center">
 				{props.query.map((value:any) => {
 					console.log(value.id);
-					return (<Grid xs={1}>
+					return (<Grid xs={3}>
 					<CardData title={value.id} value={value.value}/>
 					</Grid>)
 					})
