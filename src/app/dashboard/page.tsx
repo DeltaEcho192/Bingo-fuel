@@ -5,6 +5,8 @@ import LocationForm from "./form";
 import DataDisplay from "./data-display";
 import MapDisplay from './map-display';
 import { Card, Text, Grid, Navbar, Container} from '@nextui-org/react';
+import { useRouter } from 'next/navigation'
+import { checkLogin } from '../auth';
 
 export default function DashBoard() {
 	interface RouteData {
@@ -13,6 +15,11 @@ export default function DashBoard() {
 	}
 	const [query, setQuery] = useState<RouteData[]>([]);
 	const [embed, setEmbed] = useState<String>("");
+	const router = useRouter();
+
+	if (!checkLogin()) {
+		router.push("/");
+	}
 	return (
 			<Container fluid>
 		<Navbar isBordered variant="static">
